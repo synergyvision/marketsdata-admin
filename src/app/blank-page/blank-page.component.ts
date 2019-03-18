@@ -51,6 +51,8 @@ export class BlankPageComponent implements OnInit, OnDestroy {
             peratio: new FormControl('',[numValidator(5)])
           });
           this.data = route.snapshot.data['comapaniesData'].data;
+          console.log(this.data);
+          
           this.data.forEach(value => {
               this.dataFija.push(value);
               this.dataFijaMovil.push(value);

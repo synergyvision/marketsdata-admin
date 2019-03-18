@@ -60,13 +60,15 @@
             <hr class="line">
         </div>
     </header>
-      <mat-button-toggle-group #group="matButtonToggleGroup" [(value)] = "selectedValue" multiple>
+    <div class="row">
+        <mat-button-toggle-group #group="matButtonToggleGroup" [(value)] = "selectedValue" multiple>
           <ng-container *ngFor="let indicator of orders;">
-              <mat-button-toggle  (change)="selectionChanged()" [value]="indicator.value" *ngIf="indicator.enable">
+              <mat-button-toggle class="col-md-2" (change)="selectionChanged()" [value]="indicator.value" *ngIf="indicator.enable">
                   {{indicator.name}}
               </mat-button-toggle> &nbsp;
           </ng-container> 
       </mat-button-toggle-group>
+    </div>
 </div>              
 <div id="regular-tables">
     <div class="row">

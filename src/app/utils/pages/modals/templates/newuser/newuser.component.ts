@@ -22,13 +22,24 @@ export class NewUserComponent implements OnInit, OnDestroy {
   form: FormGroup;
   user: any ={};
   userDetails: any ={};
+
   indicator: Indicator ={
     id: '',
     indicator1: {name: 'Earning Yield', enable: true, value: 'earningYield'},
     indicator2: {name: 'Price to Earnings', enable: true, value: 'peRatio'},
     indicator3: {name: 'Return on Equity', enable: true, value:'returnOnEquity'},
     indicator4: {name: 'Return on Assets', enable: true, value: 'returnOnAssets'},
-    //indicator5: {name: 'Return on Capital', enable: true},
+    indicator5: {name: 'Beta', enable: true, value: 'beta'},
+    indicator6: {name: 'Beta', enable: true, value: 'beta'},
+    indicator7: {name: 'Beta', enable: true, value: 'beta'},
+    indicator8: {name: 'Dividend Rate', enable: true, value: 'beta'},
+    indicator9: {name: 'Dividend Yield', enable: true, value: 'beta'},
+    indicator10: {name: 'Float', enable: true, value: 'beta'},
+    indicator11: {name: 'Profit Margin', enable: true, value: 'beta'},
+    indicator12: {name: 'Price to sales', enable: true, value: 'beta'},
+    indicator13: {name: 'Price to book', enable: true, value: 'beta'},
+    indicator14: {name: 'Institution Percent', enable: true, value: 'beta'},
+    indicator15: {name: 'Year 5 change percent', enable: true, value: 'beta'}
   }
   
   constructor(public dialogRef: MatDialogRef<NewUserComponent>,
