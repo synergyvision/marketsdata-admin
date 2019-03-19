@@ -82,13 +82,17 @@ export class TopNavbarContentComponent  implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-      let user = this.afAuth.auth.currentUser;
-      let userId = user.uid;
-      let userdetail = this.userdetailservice.getUserDetailWithoutId(userId);
-      userdetail.get().pipe(takeUntil(this.ngUnsubscribe))
-      .subscribe(user =>{
-        this.user = user.data();
-      });
+    let user = this.afAuth.auth.currentUser;
+    let userId = user.uid;
+    // let userdetail = this.userdetailservice.getUserDetailWithoutId(userId);
+    // userdetail.get().pipe(takeUntil(this.ngUnsubscribe))
+    // .subscribe(user =>{
+    //   this.user = user.data();
+    // });
+
+    this.userdetailservice.getUserDetail(userId).subscribe((user) => {
+      this.user = user;
+    })
   }
 
   ngOnDestroy(): void {
