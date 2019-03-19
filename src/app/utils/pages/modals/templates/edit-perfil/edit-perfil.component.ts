@@ -29,7 +29,7 @@ export class EditPerfilComponent implements OnInit, OnDestroy {
     public afAuth: AngularFireAuth,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) { 
-      console.log(data);
+
       
         this.form = formBuilder.group({
             name: new FormControl(data.user.name, Validators.required),

@@ -62,7 +62,6 @@ export class NewUserComponent implements OnInit, OnDestroy {
   }
 
   registerUser() {
-    console.log(this.form.value);
     
     this.userDetails.email = this.form.value.email;
     this.userDetails.name = this.form.value.name;
