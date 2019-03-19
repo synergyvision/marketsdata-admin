@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  BASE_URL: 'http://localhost:8000',
+  BASE_URL: 'https://synergyvision.github.io/marketsdata-admin/',
   firebase: {
     apiKey: 'AIzaSyCV6OUPuTWfTsOEf4aqpmV30swelOmelD0',
     authDomain: 'marketsdata-vision.firebaseapp.com',

@@ -8,7 +8,7 @@ export const ChangePasswordRoutes = [
 
 @NgModule({
     declarations: [
-        ChangePasswordComponent
+       
     ],
     imports:[
         RouterModule.forChild(ChangePasswordRoutes)

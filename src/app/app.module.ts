@@ -33,7 +33,6 @@ import { EditPerfilComponent } from './utils/pages/modals/templates/edit-perfil/
   declarations: [
     AppComponent,
     LoginComponent,
-    
     RecoverPasswordComponent,
     ChangePasswordComponent,
     RegisterModalComponent,
