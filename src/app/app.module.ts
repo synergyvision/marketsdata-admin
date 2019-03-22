@@ -7,7 +7,7 @@ import { APP_BASE_HREF } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from './../environments/environment';
 import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { rootRoutes } from './app.routes';
@@ -71,6 +71,7 @@ import { EditPerfilComponent } from './utils/pages/modals/templates/edit-perfil/
       provide: APP_BASE_HREF,
       useValue: `${environment.BASE_URL}`
     },
+    { provide: FirestoreSettingsToken, useValue: {} },
     NotificationsPageComponent
   ]
 })
