@@ -8,11 +8,6 @@ export const rootRoutes: Routes = [
       component: FrontPageComponent, 
       children:[
         { path: '', redirectTo: 'users' },
-        { path: 'forms', loadChildren: '../forms/forms.module#FormsModule' },
-        { path: 'tables', loadChildren: '../tables/tables.module#TablesModule' },
-        { path: 'charts', loadChildren: '../charts/charts.module#ChartsModule' },
-        { path: 'utils', loadChildren: '../utils/utils.module#UtilsModule' },
-        { path: 'layouts', loadChildren: '../layouts/layouts.module#LayoutsModule' },
         { path: 'ranking', loadChildren: '../blank-page/blank-page.module#BlankPageModule' },
         { path: 'users', loadChildren: '../users/users.module#UsersModule' },
         { path: 'company/:id', loadChildren: '../company/company.module#CompanyModule' },
