@@ -51,15 +51,34 @@ export class BlankPageComponent implements OnInit, OnDestroy {
             peratio: new FormControl('',[numValidator(5)])
           });
           this.data = route.snapshot.data['comapaniesData'].data;
-         
-          this.data.forEach(value => {
-              this.dataFija.push(value);
-              this.dataFijaMovil.push(value);
-              this.dataMovil.push(value);
+         if(this.data.length == 1){
+           this.data = [];
+          this.companyService.getCompanies().pipe(takeUntil(this.ngUnsubscribe))
+          .subscribe((comapaniesData: any) => {
+              this.data = comapaniesData;
+             
+              
+              this.data.forEach(value => {
+                this.dataFija.push(value);
+                this.dataFijaMovil.push(value);
+                this.dataMovil.push(value);
+            });
+            
+            this.dataSource1 = new MatTableDataSource(this.data);
+            this.dataSource1.paginator = this.paginator;
+            this.displayedColumns = this.columns;
           });
-          
-          this.dataSource1 = new MatTableDataSource(this.data);
-          this.displayedColumns = this.columns;
+         } else {
+          this.data.forEach(value => {
+            this.dataFija.push(value);
+            this.dataFijaMovil.push(value);
+            this.dataMovil.push(value);
+        });
+        
+        this.dataSource1 = new MatTableDataSource(this.data);
+        this.dataSource1.paginator = this.paginator;
+        this.displayedColumns = this.columns;
+         }
          }
 
     ngOnInit(): void {
