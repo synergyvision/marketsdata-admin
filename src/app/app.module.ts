@@ -71,7 +71,6 @@ import { EditPerfilComponent } from './utils/pages/modals/templates/edit-perfil/
       provide: APP_BASE_HREF,
       useValue: `${environment.BASE_URL}`
     },
-    { provide: FirestoreSettingsToken, useValue: {} },
     NotificationsPageComponent
   ]
 })
