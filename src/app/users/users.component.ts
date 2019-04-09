@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UserdetailService } from '../services/userdetail.service';
 import { IndicatorsService } from '../services/indicators.service';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { MatDialog, MatTableDataSource } from '@angular/material';
@@ -11,6 +11,7 @@ import { NewUserComponent } from '../utils/pages/modals/templates/newuser/newuse
 import { UserDetail } from '../models/userDetail';
 import { AlertComponent } from '../shared';
 import { NotificationsPageComponent } from '../utils';
+import { AuthService } from '../services/auth.service';
 
 @Component({
     selector: 'app-users',
@@ -22,25 +23,42 @@ export class UsersComponent implements OnInit, OnDestroy {
     displayedColumns: string[] = ['name', 'lastname', 'email', 'options'];
     userSource = undefined;
     dataSource: MatTableDataSource<UserDetail>;
-
+    user: any;
 
     constructor(public userdetailservice: UserdetailService,
         public indicatorService: IndicatorsService,
         private afAuth: AngularFireAuth,
         private route: ActivatedRoute,
         public dialog: MatDialog,
-        public notificacion: NotificationsPageComponent
+        public notificacion: NotificationsPageComponent,
+        public authService: AuthService,
+        public router: Router
     ) {
         this.userSource = route.snapshot.data['userData'].data;
         this.dataSource= new MatTableDataSource(this.userSource);
     }
 
     ngOnInit() {
+      let user = this.afAuth.auth.currentUser;
+      let userId = user.uid;
+      this.userdetailservice.getUserDetail(userId).subscribe((user) => {
+        this.user = user;
+        if(!this.user.admin){
+            this.onLogout();
+        }
+      })
         this.userdetailservice.getUsersDetails().pipe(takeUntil(this.ngUnsubscribe))
             .subscribe(user => {
                 this.dataSource = new MatTableDataSource(user);
             });
     }
+
+    onLogout(){
+      this.authService.logoutUser()
+      .then(() => {
+          this.router.navigate(['/login']);
+    }).catch(error => console.log(error));
+  }
 
     deleteUser(id) {
         const dialogRef = this.dialog.open(AlertComponent, {
