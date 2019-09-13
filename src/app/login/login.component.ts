@@ -39,19 +39,19 @@ export class LoginComponent implements OnInit {
       id: '',
       indicator1: {name: 'Earning Yield', enable: true, value: 'earningYield'},
       indicator2: {name: 'Price to Earnings', enable: true, value: 'peRatio'},
-      indicator3: {name: 'Return on Equity', enable: true, value:'returnOnEquity'},
-      indicator4: {name: 'Return on Assets', enable: true, value: 'returnOnAssets'},
-      indicator5: {name: 'Week 52 High', enable: true, value: 'week52high'},
-      indicator6: {name: 'Week 52 low', enable: true, value: 'week52low'},
-      indicator7: {name: 'Week 52 change', enable: true, value: 'week52change'},
-      indicator8: {name: 'Dividend Rate', enable: true, value: 'dividendRate'},
-      indicator9: {name: 'Dividend Yield', enable: true, value: 'dividendYield'},
-      indicator10: {name: 'Float', enable: true, value: 'float'},
-      indicator11: {name: 'Profit Margin', enable: true, value: 'profitMargin'},
-      indicator12: {name: 'Price to sales', enable: true, value: 'priceToSales'},
-      indicator13: {name: 'Price to book', enable: true, value: 'priceToBook'},
-      indicator14: {name: 'Institution Percent', enable: true, value: 'institutionPercent'},
-      indicator15: {name: 'Year 5 change percent', enable: true, value: 'year5ChangePercent'}
+      // indicator3: {name: 'Return on Equity', enable: true, value:'returnOnEquity'},
+      // indicator4: {name: 'Return on Assets', enable: true, value: 'returnOnAssets'},
+      indicator3: {name: 'Week 52 High', enable: true, value: 'week52high'},
+      indicator4: {name: 'Week 52 low', enable: true, value: 'week52low'},
+      indicator5: {name: 'Week 52 change', enable: true, value: 'week52change'},
+      // indicator8: {name: 'Dividend Rate', enable: true, value: 'dividendRate'},
+      indicator6: {name: 'Dividend Yield', enable: true, value: 'dividendYield'},
+      indicator7: {name: 'Float', enable: true, value: 'float'},
+      // indicator11: {name: 'Profit Margin', enable: true, value: 'profitMargin'},
+      // indicator12: {name: 'Price to sales', enable: true, value: 'priceToSales'},
+      // indicator13: {name: 'Price to book', enable: true, value: 'priceToBook'},
+      // indicator14: {name: 'Institution Percent', enable: true, value: 'institutionPercent'},
+      indicator8: {name: 'Year 5 change percent', enable: true, value: 'year5ChangePercent'}
     }
 
     validationMessages = {
