@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { BlankPageComponent } from './blank-page.component';
 import { CommonModule } from '@angular/common';
-import { BlankPageResolver } from './blank-page.resolver';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { CompanyService } from '../services/company.service'
@@ -11,9 +10,7 @@ import { MarketcapPipe } from './marketcap-pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 export const BlankPageRoutes = [
-  { path: '', component: BlankPageComponent, resolve: {
-    comapaniesData: BlankPageResolver
-  } }
+  { path: '', component: BlankPageComponent }
 ];
 
 @NgModule({
@@ -30,6 +27,6 @@ export const BlankPageRoutes = [
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [BlankPageComponent, BlankPageResolver, CompanyService]
+  providers: [BlankPageComponent,CompanyService]
 })
 export class BlankPageModule { }

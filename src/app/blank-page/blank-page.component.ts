@@ -50,35 +50,42 @@ export class BlankPageComponent implements OnInit, OnDestroy {
             marketcap: new FormControl('',[numValidator(50000000)]),
             peratio: new FormControl('',[numValidator(5)])
           });
-          this.data = route.snapshot.data['comapaniesData'].data;
-         if(this.data.length == 1){
-           this.data = [];
+          let companies = localStorage.getItem("companies");
+          if (companies === null) {
+        
+            
+          this.data = [];
           this.companyService.getCompanies().pipe(takeUntil(this.ngUnsubscribe))
           .subscribe((comapaniesData: any) => {
               this.data = comapaniesData;
-             
-              
               this.data.forEach(value => {
                 this.dataFija.push(value);
                 this.dataFijaMovil.push(value);
                 this.dataMovil.push(value);
             });
+
+            localStorage.setItem("companies", JSON.stringify(this.data));
             
             this.dataSource1 = new MatTableDataSource(this.data);
             this.dataSource1.paginator = this.paginator;
             this.displayedColumns = this.columns;
+            this.dataSource1.paginator = this.paginator;
           });
-         } else {
-          this.data.forEach(value => {
-            this.dataFija.push(value);
-            this.dataFijaMovil.push(value);
-            this.dataMovil.push(value);
-        });
-        
-        this.dataSource1 = new MatTableDataSource(this.data);
-        this.dataSource1.paginator = this.paginator;
-        this.displayedColumns = this.columns;
-         }
+            
+          } else {
+            this.data = JSON.parse(companies);
+            this.data.forEach(value => {
+              this.dataFija.push(value);
+              this.dataFijaMovil.push(value);
+              this.dataMovil.push(value);
+          });
+          
+          this.dataSource1 = new MatTableDataSource(this.data);
+          this.dataSource1.paginator = this.paginator;
+          this.displayedColumns = this.columns;
+          
+          
+          }
          }
 
     ngOnInit(): void {
@@ -89,7 +96,10 @@ export class BlankPageComponent implements OnInit, OnDestroy {
                 this.indicator = indicator;
                 this.getParamsIndicators();
             });
+            let companies = localStorage.getItem("companies");
+            if (companies !== null) {
             this.dataSource1.paginator = this.paginator;
+            }
             this.sectorService.getSectors().subscribe((sectors)=>{
                 this.sectors = sectors;
             });
